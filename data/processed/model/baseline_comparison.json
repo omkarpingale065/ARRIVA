@@ -1,0 +1,20 @@
+{
+  "data_source": "Synthetic prototype data; not real railway data.",
+  "train_split": "/Users/tejaspingale/ARRIVA/data/processed/train.csv",
+  "test_split": "/Users/tejaspingale/ARRIVA/data/processed/test.csv",
+  "model": "Linear Regression",
+  "naive_method": "scheduled arrival plus current_delay_minutes",
+  "naive_mae": 5.397361111111111,
+  "naive_rmse": 6.990919705827934,
+  "model_mae": 2.613524115983321,
+  "model_rmse": 3.380362397259944,
+  "mae_reduction_percent": 51.57774211914281,
+  "leakage_check": {
+    "target_excluded": true,
+    "service_date_excluded": true,
+    "train_max_date": "2026-02-17",
+    "test_min_date": "2026-02-18",
+    "overlapping_feature_rows": 0,
+    "feature_count": 48
+  }
+}

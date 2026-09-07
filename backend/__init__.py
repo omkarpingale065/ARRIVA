@@ -1,0 +1,1 @@
+"""ARRIVA FastAPI backend package."""

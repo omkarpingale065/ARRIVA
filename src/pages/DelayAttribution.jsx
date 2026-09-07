@@ -1,0 +1,7 @@
+import { useEffect, useState } from 'react';
+import RailPulseShell from '../components/RailPulseShell';
+import DelayAttributionPanel from '../components/DelayAttributionPanel';
+import LoadingState from '../components/LoadingState';
+import ErrorState from '../components/ErrorState';
+import { getTrains } from '../services/api';
+export default function DelayAttribution() { const [trains, setTrains] = useState([]); const [error, setError] = useState(''); const [loading, setLoading] = useState(true); useEffect(() => { getTrains().then(setTrains).catch(() => setError('Unable to load delay attribution.')).finally(() => setLoading(false)); }, []); return <RailPulseShell title="Delay Attribution" subtitle="Per-train factors and section-wide aggregation">{loading ? <LoadingState /> : error ? <ErrorState message={error} /> : <div className="space-y-4"><DelayAttributionPanel trains={trains} />{trains.map((train) => <section key={train.id} className="rounded-xl border border-[#1c2e47] bg-[#101b2d] p-5"><h2 className="font-mono text-slate-100">{train.number} · {train.name}</h2><div className="mt-4 grid gap-3 md:grid-cols-2">{train.factors.length ? train.factors.map((factor) => <div key={factor.name} className="rounded-lg border border-[#1c2e47] p-3"><p className="capitalize text-sm text-slate-200">{factor.name}</p><p className="mt-1 text-xs text-slate-500">{factor.detail}</p></div>) : <p className="text-sm text-slate-500">No attribution factors available.</p>}</div></section>)}</div>}</RailPulseShell>; }

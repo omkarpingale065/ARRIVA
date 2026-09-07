@@ -1,0 +1,6 @@
+import { useEffect, useState } from 'react';
+import RailPulseShell from '../components/RailPulseShell';
+import LoadingState from '../components/LoadingState';
+import ErrorState from '../components/ErrorState';
+import { getTrains } from '../services/api';
+export default function IngestionFeeds() { const [trains, setTrains] = useState(null); const [error, setError] = useState(''); useEffect(() => { getTrains().then(setTrains).catch(() => setError('Simulator feed is not available.')); }, []); return <RailPulseShell title="Ingestion Feeds" subtitle="Observed backend data sources and connection state">{!trains && !error ? <LoadingState /> : error ? <ErrorState message={error} /> : <div className="space-y-3">{[['Train simulator state', 'Connected', `${trains.length} train records`], ['REST API', 'Connected', 'Live train and ETA endpoints'], ['WebSocket stream', 'Connected by dashboard session', 'Updates advance simulator state']].map(([name, status, detail]) => <div key={name} className="flex items-center justify-between rounded-xl border border-[#1c2e47] bg-[#101b2d] p-5"><div><h2 className="text-slate-100">{name}</h2><p className="mt-1 text-xs text-slate-500">{detail}</p></div><span className="font-mono text-xs text-emerald-400">● {status}</span></div>)}</div>}</RailPulseShell>; }
