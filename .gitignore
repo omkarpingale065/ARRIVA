@@ -23,3 +23,14 @@ data/*.sqlite3
 *.njsproj
 *.sln
 *.sw?
+
+# Python virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Test/cache files
+.pytest_cache/
