@@ -1,0 +1,80 @@
+{
+  "data_source": "Synthetic prototype data generated locally; not real railway data.",
+  "raw_input": "data/raw/historical_train_observations.csv",
+  "raw_columns": [
+    "record_id",
+    "train_id",
+    "train_name",
+    "service_date",
+    "route_id",
+    "origin_station",
+    "destination_station",
+    "section_id",
+    "station_sequence",
+    "station_name",
+    "scheduled_departure",
+    "scheduled_arrival",
+    "scheduled_destination_arrival",
+    "actual_observation_time",
+    "actual_destination_arrival",
+    "latitude",
+    "longitude",
+    "current_speed_kmh",
+    "distance_remaining_km",
+    "current_delay_minutes",
+    "station_arrival_time",
+    "station_departure_time",
+    "weather_condition",
+    "track_condition",
+    "signal_aspect",
+    "historical_section_delay_minutes"
+  ],
+  "engineered_features": [
+    "train_id",
+    "route_id",
+    "section_id",
+    "station_sequence",
+    "current_speed_kmh",
+    "distance_remaining_km",
+    "current_delay_minutes",
+    "scheduled_travel_time_min",
+    "historical_delay_minutes",
+    "station_dwell_time_min",
+    "route_section",
+    "progress_ratio",
+    "observation_hour",
+    "day_of_week",
+    "weather_condition",
+    "track_condition",
+    "signal_aspect"
+  ],
+  "target": {
+    "name": "target_arrival_delay_minutes",
+    "definition": "Actual destination arrival minus scheduled destination arrival, in minutes."
+  },
+  "cleaning_summary": {
+    "raw_rows": 3602,
+    "duplicate_rows_removed": 2,
+    "invalid_datetime_values": 1,
+    "invalid_speed_values": 1,
+    "invalid_distance_values": 1,
+    "invalid_delay_values": 1,
+    "invalid_coordinates": 0,
+    "rows_removed_for_missing_required_values": 1,
+    "reasonable_speed_outliers_capped": 0,
+    "reasonable_dwell_outliers_capped": 0
+  },
+  "dataset_size": {
+    "cleaned_engineered_rows": 3599,
+    "model_columns": 50
+  },
+  "split": {
+    "method": "chronological 80/20 split by service_date",
+    "train_rows": 2879,
+    "test_rows": 720,
+    "train_date_min": "2026-01-01",
+    "train_date_max": "2026-02-17",
+    "test_date_min": "2026-02-18",
+    "test_date_max": "2026-03-01"
+  }
+}

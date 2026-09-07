@@ -1,0 +1,202 @@
+{
+  "data_source": "Synthetic prototype data; not real railway data.",
+  "train_rows": 2879,
+  "test_rows": 720,
+  "feature_count": 48,
+  "target": "target_arrival_delay_minutes",
+  "metrics": [
+    {
+      "model": "Linear Regression",
+      "MAE": 2.613524115983321,
+      "RMSE": 3.380362397259944,
+      "R2": 0.6830813666256474
+    },
+    {
+      "model": "Random Forest Regressor",
+      "MAE": 3.1219022337555393,
+      "RMSE": 3.9207505052622773,
+      "R2": 0.5736564818570393
+    },
+    {
+      "model": "Gradient Boosting Regressor",
+      "MAE": 2.7949199381379857,
+      "RMSE": 3.6040935811636374,
+      "R2": 0.6397422199909327
+    }
+  ],
+  "out_of_sample_evaluation": {
+    "split": "chronological holdout",
+    "metrics": [
+      {
+        "model": "Linear Regression",
+        "MAE": 2.613524115983321,
+        "RMSE": 3.380362397259944,
+        "R2": 0.6830813666256474
+      },
+      {
+        "model": "Random Forest Regressor",
+        "MAE": 3.1219022337555393,
+        "RMSE": 3.9207505052622773,
+        "R2": 0.5736564818570393
+      },
+      {
+        "model": "Gradient Boosting Regressor",
+        "MAE": 2.7949199381379857,
+        "RMSE": 3.6040935811636374,
+        "R2": 0.6397422199909327
+      }
+    ]
+  },
+  "cross_validation": {
+    "method": "KFold(shuffle=True, random_state=42) on training split only",
+    "models": {
+      "Linear Regression": {
+        "folds": 5,
+        "MAE": {
+          "mean": 2.8679153512704567,
+          "std": 0.05077721644283785,
+          "folds": [
+            2.8833543597023072,
+            2.790835798594558,
+            2.8336623155344505,
+            2.894171724845497,
+            2.93755255767547
+          ]
+        },
+        "RMSE": {
+          "mean": 3.625675969005461,
+          "std": 0.0659053808872414,
+          "folds": [
+            3.6872378686738965,
+            3.5408149520547747,
+            3.570023163429729,
+            3.6176524639593732,
+            3.7126513969095294
+          ]
+        },
+        "R2": {
+          "mean": 0.6492607712284638,
+          "std": 0.016026494639452566,
+          "folds": [
+            0.633296716105376,
+            0.668025110771967,
+            0.659484807586799,
+            0.6583682102631245,
+            0.6271290114150526
+          ]
+        }
+      },
+      "Random Forest Regressor": {
+        "folds": 5,
+        "MAE": {
+          "mean": 2.8477919743043865,
+          "std": 0.07092379051844776,
+          "folds": [
+            2.7898831366984984,
+            2.7597725375375837,
+            2.830116278498008,
+            2.942907595908723,
+            2.9162803228791185
+          ]
+        },
+        "RMSE": {
+          "mean": 3.543187942123043,
+          "std": 0.0728237811792116,
+          "folds": [
+            3.4900263023534768,
+            3.4483259198978184,
+            3.5231035726513724,
+            3.618353332999155,
+            3.6361305827133936
+          ]
+        },
+        "R2": {
+          "mean": 0.6651137508490661,
+          "std": 0.014269647985069857,
+          "folds": [
+            0.6714738922881482,
+            0.6851415255698217,
+            0.6683765395068073,
+            0.6582358247779001,
+            0.6423409721026534
+          ]
+        }
+      },
+      "Gradient Boosting Regressor": {
+        "folds": 5,
+        "MAE": {
+          "mean": 2.568571788595453,
+          "std": 0.05011050063754826,
+          "folds": [
+            2.533529141724572,
+            2.547652158624407,
+            2.544347930794236,
+            2.5491333937662923,
+            2.668196318067757
+          ]
+        },
+        "RMSE": {
+          "mean": 3.29600458064647,
+          "std": 0.06750928886240495,
+          "folds": [
+            3.2878510225708877,
+            3.242334599005642,
+            3.2502296192641675,
+            3.272484664212393,
+            3.427122998179257
+          ]
+        },
+        "R2": {
+          "mean": 0.7101105430045814,
+          "std": 0.014667973672360196,
+          "folds": [
+            0.7084340865521002,
+            0.7216351241512559,
+            0.7177574334864665,
+            0.7204497856555744,
+            0.6822762851775106
+          ]
+        }
+      }
+    }
+  },
+  "selected_model": "Linear Regression",
+  "recommended_model_by_cv": "Gradient Boosting Regressor",
+  "selection_reason": "Linear Regression remains the deployed default for backwards-compatible behavior; CV recommendation is reported separately and the chronological holdout is out-of-sample only.",
+  "leakage_check": {
+    "target_excluded": true,
+    "service_date_excluded": true,
+    "train_max_date": "2026-02-17",
+    "test_min_date": "2026-02-18",
+    "overlapping_feature_rows": 0,
+    "feature_count": 48
+  },
+  "sample_predictions": [
+    {
+      "sample_index": 0,
+      "actual_delay_minutes": 16.6,
+      "predicted_delay_minutes": 9.18756233585228
+    },
+    {
+      "sample_index": 1,
+      "actual_delay_minutes": 12.6,
+      "predicted_delay_minutes": 11.773412922224088
+    },
+    {
+      "sample_index": 2,
+      "actual_delay_minutes": 12.6,
+      "predicted_delay_minutes": 13.417819405713654
+    },
+    {
+      "sample_index": 3,
+      "actual_delay_minutes": 12.6,
+      "predicted_delay_minutes": 11.74081325096374
+    },
+    {
+      "sample_index": 4,
+      "actual_delay_minutes": 12.6,
+      "predicted_delay_minutes": 11.674942170862334
+    }
+  ],
+  "saved_model": "data/processed/model/best_eta_model.joblib"
+}
