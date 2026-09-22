@@ -26,6 +26,8 @@ data/*.sqlite3
 
 # Python virtual environment
 .venv/
+venv/
+env/
 
 # Python cache
 __pycache__/
@@ -34,3 +36,16 @@ __pycache__/
 
 # Test/cache files
 .pytest_cache/
+.mypy_cache/
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Generated files
+.stress_test_output/
+
+# Node
+node_modules/
+dist/
